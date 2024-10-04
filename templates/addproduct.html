@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Add Products
+{% endblock title %}
+
+{% block body %}
+<div class="container mt-3">
+  <h3 class="text-center"> {{ user.first_name }} Add your Product</h3>
+  <br>
+  <div class="row">
+
+    <!-- Sidebar -->
+    <div class="col-md-2">
+      <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <a href="http://127.0.0.1:8000/admin/auth/user/">Users</a>
+          <span class="badge bg-primary rounded-pill">14</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <a href="/dashboard">Products</a>
+          <span class="badge bg-primary rounded-pill">2</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <a href="http://127.0.0.1:8000/admin/ekartapp/orders/">Orders</a>
+          <span class="badge bg-primary rounded-pill">1</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <a href="http://127.0.0.1:8000/admin/ekartapp/orderupdate/">Orders Update</a>
+          <span class="badge bg-primary rounded-pill">1</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <a href="http://127.0.0.1:8000/admin/ekartapp/contact/">Contact</a>
+          <span class="badge bg-primary rounded-pill">1</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="col-md-10">
+      {% include "messages.html" %}
+      <h3 class="text-dark bg-primary text-white p-2">Add Products</h3>
+
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <a type="button" href="/dashboard" class="btn btn-light" style="border-radius: 15px; background-color: cadetblue;">
+          <i class="fa-solid fa-backward"></i>
+        </a>
+      </div>
+
+      <form action="/dashboard/addproduct/" method="post" class="form" enctype="multipart/form-data">
+        {% csrf_token %}
+        <br/>
+        <div class="form-group">
+          <label for="pname">Product Name</label>
+          <input type="text" class="form-control p-2" id="pname" name="pname" required />
+        </div>
+        <div class="form-group">
+          <label for="file">Product Image</label>
+          <input type="file" class="form-control p-2" id="file" name="file" required />
+        </div>
+        <div class="form-group">
+          <label for="category">Product Category</label>
+          <input type="text" class="form-control p-2" id="category" name="category" required />
+        </div>
+        <div class="form-group">
+          <label for="sub-category">Product Sub-Category</label>
+          <input type="text" class="form-control p-2" id="sub-category" name="sub-category" required />
+        </div>
+        <div class="form-group">
+          <label for="desc">Product Description</label>
+          <textarea class="form-control p-2" id="desc" name="desc" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="price">Product Price</label>
+          <input type="number" class="form-control p-2" id="price" name="price" required />
+        </div>
+        <div class="form-group">
+          <label for="stock">Product Stock</label>
+          <input type="number" class="form-control p-2" id="stock" name="stock" required />
+        </div>
+        <div class="form-group">
+          <label for="paprice">Product Actual Price</label>
+          <input type="number" class="form-control p-2" id="paprice" name="paprice" required />
+        </div>
+        <br>
+        <button type="submit" class="btn btn-dark d-grid gap-2" style="border-radius: 10px;">Add</button>
+        <br>
+      </form>
+
+      <br>
+      <br>
+      <br>
+    </div>
+
+  </div>
+</div>
+{% endblock body %}
